@@ -182,6 +182,15 @@ section {
     height: 80vh;
 }
 
+#developers .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: min-content;
+}
+
 #developers .text h2 {
     font-weight: lighter;
     color: #fff;
@@ -255,6 +264,10 @@ section {
 @media (max-width: 800px) {
     #header .right {
         display: none;
+    }
+
+    #description {
+        grid-template-columns: 100%;
     }
 
     #developers .team {
