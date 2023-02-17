@@ -20,6 +20,16 @@
 </head>
 
 <body>
+    <div class="static-bg">
+        <div id="follow-cursor">
+            <div id="blob"></div>
+        </div>
+        <div id="blur"></div>
+        <div id="follow-cursor-instant">
+            <div id="head" class="cursor-instant"></div>
+        </div>
+    </div>
+
     <div class="content-container">
         <section id="header">
             <div class="left">
@@ -29,7 +39,7 @@
             <div class="right">
                 <div class="logo-container">
                     <svg  height="100" width="100">
-                        <circle cx="0" cy="0" r="40"  fill="white" />
+                        <circle cx="0" cy="0" r="40"  fill="white" opacity="0.9" />
                         <circle class="second" cx="0" cy="0" r="40"  fill="white" />
                     </svg>
                 </div>
@@ -117,6 +127,39 @@ l-75 -7 -35 68 -35 69 -65 -13z m60 -804 c118 -33 197 -174 170 -304 -23 -114
             <!-- I love you Zurmely thank you for helping me -->
         </section>
     </div>
+
+    <script>
+        const cursor = document.getElementById("follow-cursor");
+        const cursor_instant = document.getElementById("follow-cursor-instant");
+
+        cursor.animate([
+                {
+                    top: `${50}%`,
+                    left: `${50}%`,
+                    transform: "translate(-50%, -50%)"
+                }
+            ], {
+                duration: 0,
+                fill: "forwards"
+            });
+
+        document.addEventListener("mousemove", e => {
+            let { clientX, clientY } = e;
+            
+            // make cursor follow mouse but make it animated
+            cursor.animate([
+                {
+                    top: `${clientY}px`,
+                    left: `${clientX}px`,
+                    transform: "translate(-50%, -50%)"
+                }
+            ], {
+                duration: 1500,
+                fill: "forwards"
+            });
+            
+        });
+    </script>
 </body>
 
 </html>
